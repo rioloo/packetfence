@@ -130,6 +130,9 @@ sub radiusDisconnect {
         };
 
         my $acctsessionid = node_accounting_current_sessionid($mac);
+        # Sending RFC mac delimited by "-"
+        $mac =~ tr/:/-/;
+        
         # Standard Attributes
         my $attributes_ref = {
             'Calling-Station-Id' => $mac,
